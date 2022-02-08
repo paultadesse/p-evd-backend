@@ -15,6 +15,10 @@ class CreateSuperAdminsTable extends Migration
     {
         Schema::create('super_admins', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('username');
+            $table->string('email')->unique();
+            $table->string('password');
             $table->timestamps();
         });
     }

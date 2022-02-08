@@ -15,6 +15,11 @@ class CreateSalesManagersTable extends Migration
     {
         Schema::create('sales_managers', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('username');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->foreignId('admin_id')->constrained();
             $table->timestamps();
         });
     }

@@ -15,6 +15,11 @@ class CreateSubDistributorsTable extends Migration
     {
         Schema::create('sub_distributors', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('username');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->foreignId('distributor_id')->constrained();
             $table->timestamps();
         });
     }

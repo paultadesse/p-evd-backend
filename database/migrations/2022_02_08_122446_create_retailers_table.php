@@ -15,6 +15,12 @@ class CreateRetailersTable extends Migration
     {
         Schema::create('retailers', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('username');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->foreignId('distributor_id')->constrained();
+            $table->foreignId('sub_distributor_id')->constrained();
             $table->timestamps();
         });
     }
