@@ -19,6 +19,7 @@ class CreateDistributorsTable extends Migration
             $table->string('username');
             $table->string('email')->unique();
             $table->string('password');
+            $table->rememberToken();
             $table->foreignId('sales_id')->constrained();
             $table->timestamps();
         });

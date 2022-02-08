@@ -19,6 +19,7 @@ class CreateSalesManagersTable extends Migration
             $table->string('username');
             $table->string('email')->unique();
             $table->string('password');
+            $table->rememberToken();
             $table->foreignId('admin_id')->constrained();
             $table->timestamps();
         });

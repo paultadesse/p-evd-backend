@@ -19,6 +19,7 @@ class CreateRetailersTable extends Migration
             $table->string('username');
             $table->string('email')->unique();
             $table->string('password');
+            $table->rememberToken();
             $table->foreignId('distributor_id')->constrained();
             $table->foreignId('sub_distributor_id')->constrained();
             $table->timestamps();
