@@ -2,10 +2,21 @@
 
 namespace App\Models;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
-class SuperAdmin extends Model
+class SuperAdmin extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
+
+    protected $guard = 'super-admin';
+
+    protected $fillable = [
+        'name', 'username', 'email', 'password'
+    ];
+
+    protected $hidden = [
+        'password', 'remember_token'
+    ];
 }
