@@ -49,6 +49,10 @@ return [
             'provider' => 'super-admins'
         ],
         'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins'
+        ],
+        'admin-api' => [
             'driver' => 'passport',
             'provider' => 'admins'
         ],
