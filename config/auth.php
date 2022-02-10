@@ -40,6 +40,34 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'super-admin' => [
+            'driver' => 'session',
+            'provider' => 'super-admins'
+        ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins'
+        ],
+        'sales-manager' => [
+            'driver' => 'session',
+            'provider' => 'sales-managers'
+        ],
+        'sales' => [
+            'driver' => 'session',
+            'provider' => 'sales'
+        ],
+        'distributor' => [
+            'driver' => 'session',
+            'provider' => 'distributors'
+        ],
+        'sub-distributor' => [
+            'driver' => 'session',
+            'provider' => 'sub-distributors'
+        ],
+        'retailer' => [
+            'driver' => 'session',
+            'provider' => 'retailers'
+        ]
     ],
 
     /*
@@ -63,6 +91,34 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+        'super-admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\SuperAdmin::class
+        ],
+        'admins' => [
+            'driver' => 'eloquent'
+            'model' => App\Models\Admin::class
+        ],
+        'sales-managers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\SalesManager::class
+        ],
+        'sales' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Sales::class
+        ],
+        'distributors' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Distributor::class
+        ],
+        'sub-distributors' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\SubDistributor::class
+        ],
+        'retailers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Retailer::class
         ],
 
         // 'users' => [
