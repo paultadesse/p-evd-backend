@@ -44,28 +44,32 @@ return [
             'driver' => 'session',
             'provider' => 'super-admins'
         ],
+        'super-admin-api' => [
+            'driver' => 'passport',
+            'provider' => 'super-admins'
+        ],
         'admin' => [
-            'driver' => 'session',
+            'driver' => 'passport',
             'provider' => 'admins'
         ],
         'sales-manager' => [
-            'driver' => 'session',
+            'driver' => 'passport',
             'provider' => 'sales-managers'
         ],
         'sales' => [
-            'driver' => 'session',
+            'driver' => 'passport',
             'provider' => 'sales'
         ],
         'distributor' => [
-            'driver' => 'session',
+            'driver' => 'passport',
             'provider' => 'distributors'
         ],
         'sub-distributor' => [
-            'driver' => 'session',
+            'driver' => 'passport',
             'provider' => 'sub-distributors'
         ],
         'retailer' => [
-            'driver' => 'session',
+            'driver' => 'passport',
             'provider' => 'retailers'
         ]
     ],
@@ -97,7 +101,7 @@ return [
             'model' => App\Models\SuperAdmin::class
         ],
         'admins' => [
-            'driver' => 'eloquent'
+            'driver' => 'eloquent',
             'model' => App\Models\Admin::class
         ],
         'sales-managers' => [
@@ -145,6 +149,12 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'super-admins' => [
+            'provider' => 'super-admins',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
