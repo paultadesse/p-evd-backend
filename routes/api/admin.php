@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Resources\AdminResource;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -12,12 +14,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin-api']], function
 
     Route::get('dashboard', [LoginController::class, function (Request $request) {
 
-        // if ($request->user()->tokenCan('super-admin')) {
+        // $admin = Admin::select('admins.*')->find(auth()->guard('admin-api')->user()->id);
+        $admin = Admin::select('admins.*')->with('superAdmin')->find(auth()->guard('admin-api')->user()->id);
+        return AdminResource::make($admin);
 
-        return  $request->user();
-        // }
-
-        // return "you don't have super-admin scope";
     }]);
     Route::post('logout', [LoginController::class, 'logout']);
 });

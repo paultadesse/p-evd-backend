@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Resources\SuperAdminResource;
+use App\Models\SuperAdmin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,7 +16,8 @@ Route::group(['prefix' => 'super-admin', 'middleware' => ['auth:super-admin-api'
 
         // if ($request->user()->tokenCan('super-admin')) {
 
-        return  $request->user();
+        $super_admin = SuperAdmin::select('super_admins.*')->with('admins')->find(auth()->guard('super-admin-api')->user()->id);
+        return SuperAdminResource::make($super_admin);
         // }
 
         // return "you don't have super-admin scope";
