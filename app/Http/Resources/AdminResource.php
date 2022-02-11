@@ -23,6 +23,6 @@ class AdminResource extends JsonResource
             'email' => $this->email,
             'super_admin' => SuperAdminResource::make($this->whenLoaded('superAdmin')),
         ];
-        return parent::toArray($request);
+        // return parent::toArray($request);
     }
 }

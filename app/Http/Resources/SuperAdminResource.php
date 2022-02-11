@@ -22,6 +22,6 @@ class SuperAdminResource extends JsonResource
             'email' => $this->email,
             'admins' => AdminResource::collection($this->whenLoaded('admins')),
         ];
-        return parent::toArray($request);
+        // return parent::toArray($request);
     }
 }
