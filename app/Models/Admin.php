@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\SuperAdmin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class Admin extends Authenticatable
@@ -19,4 +20,9 @@ class Admin extends Authenticatable
     protected $hidden = [ 
         'password', 'remember_token'
     ];
+
+    public function superAdmin()
+    {
+        return $this->belongsTo(SuperAdmin::class);
+    }
 }

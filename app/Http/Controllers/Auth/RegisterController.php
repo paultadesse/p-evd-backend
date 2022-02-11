@@ -43,18 +43,27 @@ class RegisterController extends Controller
             'password' => 'required',
         ]);
 
-        if ($validator) {
+        if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()->all()]);
         }
 
-        $admin = Admin::create([
+        //for now manually select Super Admin to create Admin 
+        // ( so this super-admin is the parent of the the newly created admin )
+        //later replace this with [ $request->super-admin ]
+
+        $super_admin = SuperAdmin::findOrFail(1);
+
+        // creating the admin
+        // admin is only created by Super Admins
+
+        $created_admin = $super_admin->admins()->create([
             'name' => $request['name'],
             'username' => $request['username'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
         ]);
 
-        return response()->json($admin, 200);
+        return response()->json($created_admin, 200);
     }
 
     
