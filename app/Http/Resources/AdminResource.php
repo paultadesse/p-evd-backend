@@ -15,7 +15,6 @@ class AdminResource extends JsonResource
      */
     public function toArray($request)
     {
-        // $super_admin = $this->whenLoaded('superAdmin');
         return [
             'id' => $this->id,
             'name' => $this->name,
