@@ -25,7 +25,6 @@ class LoginController extends Controller
         if(auth()->guard('super-admin')->attempt(['email' => request('email'), 'password' => request('password')])){
 
             // config(['auth.guards.api.provider' => 'super-admins']);
-
             $super_admin = SuperAdmin::select('super_admins.*')->find(auth()->guard('super-admin')->user()->id);
             $success =  $super_admin;
 
