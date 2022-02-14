@@ -22,6 +22,7 @@ class AdminResource extends JsonResource
             'email' => $this->email,
             'super_admin' => SuperAdminResource::make($this->whenLoaded('superAdmin')),
             'sales_managers' => SalesManagerResource::collection($this->whenLoaded('salesManagers')),
+            'logged_in_as_admin' => auth()->getDefaultDriver() == 'admin-api',
         ];
         // return parent::toArray($request);
     }
