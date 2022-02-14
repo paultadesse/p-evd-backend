@@ -20,8 +20,6 @@ class SalesManagerResource extends JsonResource
             'username' => $this->username,
             'email' => $this->email,
             'admin' => SalesManagerResource::make($this->whenLoaded('admin')),
-            'logged_in_as_salesManager' => auth()->getDefaultDriver(),
-
         ];
         // return parent::toArray($request);
     }

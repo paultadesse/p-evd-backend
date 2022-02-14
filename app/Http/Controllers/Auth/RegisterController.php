@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Actions\CreateAdminAction;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\CreateAdminRequest;
 use App\Models\Admin;
 use App\Models\SuperAdmin;
 use Illuminate\Http\Request;
@@ -34,36 +36,18 @@ class RegisterController extends Controller
         return response()->json($super_admin, 200);
     }
 
-    protected function createAdmin(Request $request)
+    protected function createAdmin(CreateAdminRequest $request, CreateAdminAction $createAdminAction)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'username' => 'required',
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
 
-        if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()->all()]);
+        $admin = $createAdminAction->create($request);
+
+        if($admin->wasRecentlyCreated)
+        {
+            return response()->json($admin, 200);
+        }else {
+            return response()->json([ 'message' => 'There is somthing going on ....']);
         }
 
-        //for now manually select Super Admin to create Admin 
-        // ( so this super-admin is the parent of the the newly created admin )
-        //later replace this with [ $request->super-admin ]
-
-        $super_admin = SuperAdmin::findOrFail(1);
-
-        // creating the admin
-        // admin is only created by Super Admins
-
-        $created_admin = $super_admin->admins()->create([
-            'name' => $request['name'],
-            'username' => $request['username'],
-            'email' => $request['email'],
-            'password' => Hash::make($request['password']),
-        ]);
-
-        return response()->json($created_admin, 200);
     }
 
     protected function createSalesManager(Request $request)
