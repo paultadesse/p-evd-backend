@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Actions\CreateAdminAction;
+use App\Actions\Admin\CreateAdminAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CreateAdminRequest;
 use App\Models\Admin;

@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\Actions;
+namespace App\Admin\Actions;
 
 use App\Http\Requests\Admin\CreateAdminRequest;
 use App\Models\Admin;
