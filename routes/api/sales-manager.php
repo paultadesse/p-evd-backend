@@ -2,8 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Resources\AdminResource;
-use App\Models\Admin;
+use App\Http\Resources\SalesManagerResource;
 use App\Models\SalesManager;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,9 +14,8 @@ Route::group(['prefix' => 'sales-manager', 'middleware' => ['auth:sales-manager-
 
     Route::get('dashboard', [LoginController::class, function (Request $request) {
 
-        $sales_manager = SalesManager::select('sales_managers.*')->find(auth()->guard('sales-manager-api')->user()->id);
-        // return AdminResource::make($admin);
-        return ($sales_manager);
+        $sales_manager = SalesManager::select('sales_managers.*')->with('admin')->find(auth()->guard('sales-manager-api')->user()->id);
+        return SalesManagerResource::make($sales_manager);
 
     }]);
     Route::post('logout', [LoginController::class, 'logout']);

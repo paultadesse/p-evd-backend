@@ -14,6 +14,13 @@ class SalesManagerResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'username' => $this->username,
+            'email' => $this->email,
+            'admin' => SalesManagerResource::make($this->whenLoaded('admin')),
+        ];
+        // return parent::toArray($request);
     }
 }

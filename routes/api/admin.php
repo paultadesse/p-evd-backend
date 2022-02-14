@@ -15,7 +15,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin-api']], function
     Route::get('dashboard', [LoginController::class, function (Request $request) {
 
         // $admin = Admin::select('admins.*')->find(auth()->guard('admin-api')->user()->id);
-        $admin = Admin::select('admins.*')->with('superAdmin')->find(auth()->guard('admin-api')->user()->id);
+        $admin = Admin::select('admins.*')->with('superAdmin','salesManagers')->find(auth()->guard('admin-api')->user()->id);
         return AdminResource::make($admin);
 
     }]);
