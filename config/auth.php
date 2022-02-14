@@ -57,6 +57,10 @@ return [
             'provider' => 'admins'
         ],
         'sales-manager' => [
+            'driver' => 'session',
+            'provider' => 'sales-managers'
+        ],
+        'sales-manager-api' => [
             'driver' => 'passport',
             'provider' => 'sales-managers'
         ],

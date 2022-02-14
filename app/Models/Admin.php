@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\SalesManager;
 use App\Models\SuperAdmin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -25,5 +26,10 @@ class Admin extends Authenticatable
     public function superAdmin()
     {
         return $this->belongsTo(SuperAdmin::class);
+    }
+
+    public function salesManagers()
+    {
+        return $this->hasMany(SalesManager::class);
     }
 }
