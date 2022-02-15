@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Actions\Admin\CreateAdminAction;
 use App\Actions\SalesManager\CreateSalesManagerAction;
+use App\Actions\Sales\CreateSalesAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CreateAdminRequest;
 use App\Http\Requests\SalesManager\CreateSalesManagerRequest;
+use App\Http\Requests\Sales\CreateSalesRequest;
 use App\Models\Admin;
 use App\Models\SuperAdmin;
 use Illuminate\Http\Request;
@@ -64,6 +66,18 @@ class RegisterController extends Controller
             return response()->json([ 'message' => 'There is somthing going on ....']);
         }
         
+    }
+
+    protected function createSales(CreateSalesRequest $request, CreateSalesAction $createSalesAction)
+    {
+        $sales = $createSalesAction->create($request);
+
+        if($sales->wasRecentlyCreated)
+        {
+            return response()->json($sales, 200);
+        }else {
+            return response()->json([ 'message' => 'There is somthing going on ....']);
+        }
     }
 
     

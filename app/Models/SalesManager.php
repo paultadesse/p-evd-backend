@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Admin;
+use App\Models\Sales;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -25,5 +26,10 @@ class SalesManager extends Authenticatable
     public function admin()
     {
         return $this->belongsTo(Admin::class);
+    }
+
+    public function sales()
+    {
+        return $this->hasMany(Sales::class);
     }
 }

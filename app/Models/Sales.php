@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\SalesManager;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
 
 class Sales extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasApiTokens;
 
     protected $guard = 'sales';
 
@@ -19,4 +21,9 @@ class Sales extends Authenticatable
     protected $hidden = [
         'password', 'remember_token'
     ];
+
+    public function salesManager()
+    {
+        return $this->belongsTo(SalesManager::class);
+    }
 }

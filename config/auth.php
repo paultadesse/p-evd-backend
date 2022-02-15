@@ -65,6 +65,10 @@ return [
             'provider' => 'sales-managers'
         ],
         'sales' => [
+            'driver' => 'session',
+            'provider' => 'sales'
+        ],
+        'sales-api' => [
             'driver' => 'passport',
             'provider' => 'sales'
         ],

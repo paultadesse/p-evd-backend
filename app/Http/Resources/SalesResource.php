@@ -2,9 +2,10 @@
 
 namespace App\Http\Resources;
 
+use App\Http\Resources\SalesResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class SalesManagerResource extends JsonResource
+class SalesResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -19,8 +20,7 @@ class SalesManagerResource extends JsonResource
             'name' => $this->name,
             'username' => $this->username,
             'email' => $this->email,
-            'admin' => SalesManagerResource::make($this->whenLoaded('admin')),
-            'sales' => SalesManagerResource::collection($this->whenLoaded('sales')),
+            'sales_manager' => SalesResource::make($this->whenLoaded('salesManager')),
         ];
         // return parent::toArray($request);
     }
