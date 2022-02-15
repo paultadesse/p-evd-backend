@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Distributor;
 use App\Models\SalesManager;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -25,5 +26,10 @@ class Sales extends Authenticatable
     public function salesManager()
     {
         return $this->belongsTo(SalesManager::class);
+    }
+
+    public function distributors() 
+    {
+        return $this->hasMany(Distributor::class);
     }
 }

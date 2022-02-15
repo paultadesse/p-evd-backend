@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Sales;
+namespace App\Http\Requests\Distributor;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class CreateSalesRequest extends FormRequest
+class CreateDistributorRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -15,8 +15,8 @@ class CreateSalesRequest extends FormRequest
      */
     public function authorize()
     {
-        //later change this return statment to check auth guard [ it must be only sales-manager-api ]
-        // return auth()->getDefaultDriver() == 'sales-manager-api';
+        //later change this return statment to check auth guard [ it must be only sales-api ]
+        // return auth()->getDefaultDriver() == 'sales-api';
         return true;
     }
 
@@ -30,13 +30,14 @@ class CreateSalesRequest extends FormRequest
         return [
             'name' => 'required',
             'username' => 'required',
-            'email' => 'required|email|unique:sales',
+            'email' => 'required|email|unique:distributors',
             'password' => 'required',
         ];
     }
 
-    protected function failedValidation(Validator $validator)
-    {
-        throw new HttpResponseException(response()->json($validator->errors(), 422));
+    //override the faildValidation method of this form request class...
+    protected function failedValidation(Validator $validator) 
+    { 
+        throw new HttpResponseException(response()->json($validator->errors(), 422)); 
     }
 }

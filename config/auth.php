@@ -73,6 +73,10 @@ return [
             'provider' => 'sales'
         ],
         'distributor' => [
+            'driver' => 'session',
+            'provider' => 'distributors'
+        ],
+        'distributor-api' => [
             'driver' => 'passport',
             'provider' => 'distributors'
         ],

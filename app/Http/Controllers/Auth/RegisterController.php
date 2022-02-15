@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Actions\Admin\CreateAdminAction;
+use App\Actions\Distributor\CreateDistributorAction;
 use App\Actions\SalesManager\CreateSalesManagerAction;
 use App\Actions\Sales\CreateSalesAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CreateAdminRequest;
+use App\Http\Requests\Distributor\CreateDistributorRequest;
 use App\Http\Requests\SalesManager\CreateSalesManagerRequest;
 use App\Http\Requests\Sales\CreateSalesRequest;
 use App\Models\Admin;
@@ -76,6 +78,18 @@ class RegisterController extends Controller
         {
             return response()->json($sales, 200);
         }else {
+            return response()->json([ 'message' => 'There is somthing going on ....']);
+        }
+    }
+
+    protected function createDistributor(CreateDistributorRequest $request, CreateDistributorAction $createDistributorAction  )
+    {
+        $distributor = $createDistributorAction->create($request);
+
+        if($distributor->wasRecentlyCreated)
+        {
+            return response()->json($distributor, 200);
+        }else{
             return response()->json([ 'message' => 'There is somthing going on ....']);
         }
     }

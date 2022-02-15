@@ -14,7 +14,7 @@ Route::group(['prefix' => 'sales', 'middleware' => ['auth:sales-api']], function
 
     Route::get('dashboard', [LoginController::class, function (Request $request) {
 
-        $sales = Sales::select('sales.*')->with('salesManager')->find(auth()->guard('sales-api')->user()->id);
+        $sales = Sales::select('sales.*')->with('salesManager','distributors')->find(auth()->guard('sales-api')->user()->id);
         return SalesResource::make($sales);
 
     }]);
