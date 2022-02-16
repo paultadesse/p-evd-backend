@@ -15,8 +15,8 @@ class CreateRetailerRequest extends FormRequest
      */
     public function authorize()
     {
-        //later change this return statment to check auth guard [ it must be only retailer-api ]
-        // return auth()->getDefaultDriver() == 'retailer-api';
+        //later change this return statment to check auth guard [ it must be distributor-api or sub-distributor-api ]
+        // return auth()->getDefaultDriver() == 'distributor-api' or 'sub-distributor-api';
         return false;
     }
 
