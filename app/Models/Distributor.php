@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Retailer;
 use App\Models\Sales;
 use App\Models\SubDistributor;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -31,5 +32,10 @@ class Distributor extends Authenticatable
     public function subDistributors()
     {
         return $this->hasMany(SubDistributor::class);
+    }
+
+    public function retailers()
+    {
+        return $this->hasMany(Retailer::class);
     }
 }
