@@ -91,7 +91,7 @@ return [
         'retailer' => [
             'driver' => 'session',
             'provider' => 'retailers'
-        ]
+        ],
         'retailer-api' => [
             'driver' => 'passport',
             'provider' => 'retailers'
