@@ -14,7 +14,7 @@ Route::group(['prefix' => 'retailer', 'middleware' => ['auth:retailer-api']], fu
 
     Route::get('dashboard', [LoginController::class, function (Request $request) {
 
-        $retailer = Retailer::select('retailers.*')->with('distributor','subdistributor')->find(auth()->guard('distributor-api')->user()->id);
+        $retailer = Retailer::select('retailers.*')->with('distributor','subDistributor')->find(auth()->guard('distributor-api')->user()->id);
         return RetailerResource::make($retailer);
 
     }]);
