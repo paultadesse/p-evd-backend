@@ -17,7 +17,7 @@ class CreateRetailerRequest extends FormRequest
     {
         //later change this return statment to check auth guard [ it must be distributor-api or sub-distributor-api ]
         // return auth()->getDefaultDriver() == 'distributor-api' or 'sub-distributor-api';
-        return false;
+        return true;
     }
 
     /**
