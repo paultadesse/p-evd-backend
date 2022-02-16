@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Distributor;
+use App\Models\Retailer;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -27,5 +28,10 @@ class SubDistributor extends Authenticatable
         return $this->belongsTo(Distributor::class);
     }
 
-    
+    public function retailers()
+    {
+        return $this->hasMany(Retailer::class);
+    }
+
+
 }

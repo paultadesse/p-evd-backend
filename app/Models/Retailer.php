@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\Distributor;
+use App\Models\SubDistributor;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class Retailer extends Authenticatable
@@ -19,4 +21,14 @@ class Retailer extends Authenticatable
     protected $hidden = [
         'password', 'remember_token'
     ];
+
+    public function distributor()
+    {
+        return $this->belongsTo(Distributor::class);
+    }
+
+    public function subDistributor()
+    {
+        return $this->belongsTo(SubDistributor::class);
+    }
 }
