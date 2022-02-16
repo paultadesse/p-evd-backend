@@ -3,6 +3,7 @@
 namespace App\Actions\Retailer;
 
 use App\Http\Requests\Retailer\CreateRetailerRequest;
+use App\Models\Retailer;
 use App\Models\SubDistributor;
 use Illuminate\Support\Facades\Hash;
 

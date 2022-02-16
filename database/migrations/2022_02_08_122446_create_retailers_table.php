@@ -20,8 +20,15 @@ class CreateRetailersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();
+
             $table->foreignId('distributor_id')->constrained();
+            $table->unsignedBigInteger('distributor_id');
+            $table->foreign('distributor_id')->references('id')->on('distributors');
+
             $table->foreignId('sub_distributor_id')->constrained();
+            $table->unsignedBigInteger('sub_distributor_id');
+            $table->foreign('sub_distributor_id')->references('id')->on('sub_distributors');
+            
             $table->timestamps();
         });
     }
