@@ -15,7 +15,7 @@ class CreateSalesManagerAction {
         // ( so this super-admin is the parent of the the newly created admin )
         //later replace this with [ $request->admin ]
 
-        $admin = Admin::findOrFail(3);
+        $admin = Admin::findOrFail(1);
 
         // creating the sales-manager
         // sales-manager is only created by Admins

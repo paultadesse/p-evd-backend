@@ -13,7 +13,7 @@ class CreateSalesAction {
 	{
         //later replace this with [ $request->sales-manager ]
 
-        $sales_manager = SalesManager::findOrFail(2);
+        $sales_manager = SalesManager::findOrFail(1);
 
         // creating the admin
         // admin is only created by Super Admins
