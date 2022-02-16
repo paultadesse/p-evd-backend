@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use App\Actions\Admin\CreateAdminAction;
 use App\Actions\Distributor\CreateDistributorAction;
+use App\Actions\Retailer\CreateRetailerAction;
 use App\Actions\SalesManager\CreateSalesManagerAction;
 use App\Actions\Sales\CreateSalesAction;
 use App\Actions\SubDistributor\CreateSubDistributorAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CreateAdminRequest;
 use App\Http\Requests\Distributor\CreateDistributorRequest;
+use App\Http\Requests\Retailer\CreateRetailerRequest;
 use App\Http\Requests\SalesManager\CreateSalesManagerRequest;
 use App\Http\Requests\Sales\CreateSalesRequest;
 use App\Http\Requests\SubDistributor\CreateSubDistributorRequest;
@@ -103,6 +105,18 @@ class RegisterController extends Controller
         if($sub_distributor->wasRecentlyCreated)
         {
             return response()->json($sub_distributor, 200);
+        }else{
+            return response()->json(['message' => 'There is somthing going on ....']);
+        }
+    }
+
+    public function createRetailer(CreateRetailerRequest $request, CreateRetailerAction $createRetailerAction)
+    {
+        $rertailer = $createRetailerAction->create($request);
+
+        if($retailer->wasRecentlyCreated)
+        {
+            return response()->json($retailer, 200);
         }else{
             return response()->json(['message' => 'There is somthing going on ....']);
         }
