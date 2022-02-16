@@ -6,11 +6,13 @@ use App\Actions\Admin\CreateAdminAction;
 use App\Actions\Distributor\CreateDistributorAction;
 use App\Actions\SalesManager\CreateSalesManagerAction;
 use App\Actions\Sales\CreateSalesAction;
+use App\Actions\SubDistributor\CreateSubDistributorAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CreateAdminRequest;
 use App\Http\Requests\Distributor\CreateDistributorRequest;
 use App\Http\Requests\SalesManager\CreateSalesManagerRequest;
 use App\Http\Requests\Sales\CreateSalesRequest;
+use App\Http\Requests\SubDistributor\CreateSubDistributorRequest;
 use App\Models\Admin;
 use App\Models\SuperAdmin;
 use Illuminate\Http\Request;
@@ -91,6 +93,18 @@ class RegisterController extends Controller
             return response()->json($distributor, 200);
         }else{
             return response()->json([ 'message' => 'There is somthing going on ....']);
+        }
+    }
+
+    public function createSubDistributor(CreateSubDistributorRequest $request, CreateSubDistributorAction $createSubDistributorAction )
+    {
+        $sub_distributor = $createSubDistributorAction->create($request);
+
+        if($sub_distributor->wasRecentlyCreated)
+        {
+            return response()->json($sub_distributor, 200);
+        }else{
+            return response()->json(['message' => 'There is somthing going on ....']);
         }
     }
 

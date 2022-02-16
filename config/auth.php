@@ -81,6 +81,10 @@ return [
             'provider' => 'distributors'
         ],
         'sub-distributor' => [
+            'driver' => 'session',
+            'provider' => 'sub-distributors'
+        ],
+        'sub-distributor-api' => [
             'driver' => 'passport',
             'provider' => 'sub-distributors'
         ],
